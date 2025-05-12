@@ -20,15 +20,15 @@ namespace MvcTrainingHub.Business.Concrete
 
         public void CategoryAddBL(Category p)
         {
-            repository.Insert(p);
-            //if (p.CategoryName == "" || p.CategoryName.Length <= 3 || p.CategoryDescription == "" || p.CategoryName.Length >= 51)
-            //{
-            //    // error message
-            //}
-            //else
-            //{
-            //    repository.Insert(p);
-            //}
+
+            if (p.CategoryName == "" || p.CategoryName.Length <= 3 || p.CategoryDescription == "" || p.CategoryName.Length >= 51)
+            {
+                // error message
+            }
+            else
+            {
+                repository.Insert(p);
+            }
         }
     }
 }
