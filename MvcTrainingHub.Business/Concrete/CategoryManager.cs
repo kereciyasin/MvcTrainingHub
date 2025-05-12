@@ -16,9 +16,8 @@ namespace MvcTrainingHub.Business.Concrete
         {
             return repository.GetAll();
         }
-        
 
-        [HttpPost]
+
         public void CategoryAddBL(Category p)
         {
             repository.Insert(p);

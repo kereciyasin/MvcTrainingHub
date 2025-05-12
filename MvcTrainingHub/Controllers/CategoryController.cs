@@ -17,7 +17,13 @@ namespace MvcTrainingHub.Controllers
             var value = cm.GetAllBL();
             return View(value);
         }
+        [HttpGet]
+        public ActionResult AddCategory()
+        {
+            return View();
+        }
 
+        [HttpPost]
         public ActionResult AddCategory(Category p)
         {
             cm.CategoryAddBL(p);
