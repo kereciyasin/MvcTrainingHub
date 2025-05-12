@@ -15,7 +15,9 @@ namespace MvcTrainingHub.Entities.Concrete
         public string WriterMail { get; set; }
         public string WriterPassword { get; set; }
 
-        public ICollection<Content> Contents { get; set; } // Navigation property for the relationship with Content 
+        public ICollection<Heading> Headings { get; set; } // Navigation property for the relationship with Heading 
+
+        public ICollection<Content> Contents { get; set; } // Navigation property for the relationship with Content
 
     }
 }

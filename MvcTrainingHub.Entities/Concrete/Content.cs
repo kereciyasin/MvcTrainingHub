@@ -18,5 +18,7 @@ namespace MvcTrainingHub.Entities.Concrete
         public int? WriterID { get; set; } // Foreign key property for the relationship with Writer
         public virtual Writer Writer { get; set; } // Navigation property for the relationship with Writer
 
+
+
     }
 }

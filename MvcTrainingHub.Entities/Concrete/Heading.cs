@@ -16,5 +16,8 @@ namespace MvcTrainingHub.Entities.Concrete
         public virtual Category Category { get; set; } // Navigation property for the relationship with Category
 
         public ICollection<Content> Contents { get; set; } // Navigation property for the relationship with Content 
+
+        public int? WriterID { get; set; } // Foreign key property for the relationship with Writer    
+        public virtual Writer Writer { get; set; } // Navigation property for the relationship with Writer
     }
 }
