@@ -12,21 +12,24 @@ namespace MvcTrainingHub.Business.Concrete
     {
         GenericRepository<Category> repository = new GenericRepository<Category>();
 
-        public List<Category> GetAll()
+        public List<Category> GetAllBL()
         {
             return repository.GetAll();
         }
+        
 
+        [HttpPost]
         public void CategoryAddBL(Category p)
         {
-            if (p.CategoryName == "" || p.CategoryName.Length <= 3 || p.CategoryDescription == "" || p.CategoryName.Length >= 51)
-            {
-                // error message
-            }
-            else
-            {
-                repository.Insert(p);
-            }
+            repository.Insert(p);
+            //if (p.CategoryName == "" || p.CategoryName.Length <= 3 || p.CategoryDescription == "" || p.CategoryName.Length >= 51)
+            //{
+            //    // error message
+            //}
+            //else
+            //{
+            //    repository.Insert(p);
+            //}
         }
     }
 }
