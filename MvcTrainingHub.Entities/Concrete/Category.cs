@@ -13,5 +13,7 @@ namespace MvcTrainingHub.Entities.Concrete
         public string CategoryDescription { get; set; }
         public bool CategoryStatus { get; set; }
 
+        public ICollection<Heading> Headings { get; set; } // Navigation property for the relationship with Heading
+
     }
 }
