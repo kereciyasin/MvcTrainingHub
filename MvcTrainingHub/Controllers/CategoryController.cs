@@ -8,6 +8,8 @@ using System.Web;
 using System.Web.Mvc;
 using MvcTrainingHub.DataAccess.Concrete.Repositories;
 using MvcTrainingHub.DataAccess.EntityFramework;
+using MvcTrainingHub.Business.ValidationRules;
+using FluentValidation.Results;
 
 
 
@@ -34,7 +36,21 @@ namespace MvcTrainingHub.Controllers
         public ActionResult AddCategory(Category p)
         {
             //cm.CategoryAddBL(p);
-            return RedirectToAction("GetCategoryList");
+            CategoryValidator categoryValidator = new CategoryValidator();
+            ValidationResult result = categoryValidator.Validate(p);
+            if (result.IsValid)
+            {
+                cm.CategoryAdd(p);
+                return RedirectToAction("GetCategoryList");
+            }
+            else
+            {
+                foreach (var item in result.Errors)
+                {
+                    ModelState.AddModelError(item.PropertyName, item.ErrorMessage);
+                }
+                return View();
+            }
         }
     }
 }
