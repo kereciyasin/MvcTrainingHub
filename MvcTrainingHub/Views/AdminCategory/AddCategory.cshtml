@@ -18,7 +18,7 @@
                     <div class="card-body">
                         <p class="text-muted mb-4">Please enter a descriptive name and brief explanation.</p>
 
-                        @using (Html.BeginForm("AddCategory", "Category", FormMethod.Post))
+                        @using (Html.BeginForm("AddCategory", "AdminCategory", FormMethod.Post))
                         {
                             <div class="mb-3">
                                 @Html.LabelFor(x => x.CategoryName, "Category Name", htmlAttributes: new { @class = "form-label fw-semibold" })

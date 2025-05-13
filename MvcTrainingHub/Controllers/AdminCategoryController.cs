@@ -2,14 +2,9 @@
 using MvcTrainingHub.Business.ValidationRules;
 using MvcTrainingHub.DataAccess.EntityFramework;
 using MvcTrainingHub.Entities.Concrete;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Web;
 using System.Web.Mvc;
+using System.ComponentModel.DataAnnotations;
 using FluentValidation.Results;
-using ValidationResult = FluentValidation.Results.ValidationResult;
 
 namespace MvcTrainingHub.Controllers
 {
@@ -27,24 +22,26 @@ namespace MvcTrainingHub.Controllers
         {
             return View();
         }
+
         [HttpPost]
         public ActionResult AddCategory(Category p)
         {
+            //cm.CategoryAddBL(p);
             CategoryValidator categoryValidator = new CategoryValidator();
-            ValidationResult results = categoryValidator.Validate(p);
-            if (results.IsValid)
+            FluentValidation.Results.ValidationResult result = categoryValidator.Validate(p);
+            if (result.IsValid)
             {
                 categoryManager.CategoryAdd(p);
                 return RedirectToAction("Index");
             }
             else
             {
-                foreach (var error in results.Errors)
+                foreach (var item in result.Errors)
                 {
-                    ModelState.AddModelError(error.PropertyName, error.ErrorMessage);
+                    ModelState.AddModelError(item.PropertyName, item.ErrorMessage);
                 }
+                return View();
             }
-            return RedirectToAction("Index");
         }
     }
 }
