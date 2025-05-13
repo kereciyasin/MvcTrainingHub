@@ -9,9 +9,9 @@ using System.Threading.Tasks;
 
 namespace MvcTrainingHub.Business.ValidationRules
 {
-    public class CategoryValidatior : AbstractValidator<Category>
+    public class CategoryValidator : AbstractValidator<Category>
     {
-        public CategoryValidatior()
+        public CategoryValidator()
         {
             RuleFor(x => x.CategoryName)
                 .NotEmpty()
