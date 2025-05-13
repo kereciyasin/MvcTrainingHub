@@ -1,20 +1,70 @@
-﻿
+﻿@using MvcTrainingHub.Entities.Concrete
+@model List<Category>
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 
-<br />
-<table class="table table-bordered">
-    <tr>
-        <th>ID</th>
-        <th>Kategori ID</th>
-        <th>Status</th>
-    </tr>
-    <tr>
-        <td>1</td>
-        <td>Spr</td>
-        <td>Aktif</td>
-    </tr>
-</table>
+<section class="content">
+    <div class="container-fluid py-3">
+        <div class="d-flex justify-content-between align-items-center mb-3">
+            <h4 class="mb-0 fw-bold text-dark">
+                <i class="fas fa-layer-group text-primary me-2"></i> Category List
+            </h4>
+            <a href="/AdminCategory/AddCategory" class="btn btn-sm btn-success px-4 shadow-sm">
+                <i class="fas fa-plus-circle me-1"></i> Add Category
+            </a>
+        </div>
 
+        <div class="card border-0 shadow-sm rounded-3">
+            <div class="card-body p-0">
+                <div class="table-responsive">
+                    <table class="table table-hover table-striped align-middle mb-0">
+                        <thead class="table-light">
+                            <tr class="text-center">
+                                <th style="width:5%;">ID</th>
+                                <th class="text-start">Category Name</th>
+                                <th>Status</th>
+                                <th style="width:30%;">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                <tr class="text-center">
+                                    <td>@item.CategoryID</td>
+                                    <td class="text-start">@item.CategoryName</td>
+                                    <td>
+                                        @if (item.CategoryStatus)
+                                        {
+                                            <span class="badge bg-success-subtle text-success px-3 py-2 rounded-pill">Active</span>
+                                        }
+                                        else
+                                        {
+                                            <span class="badge bg-secondary-subtle text-dark px-3 py-2 rounded-pill">Inactive</span>
+                                        }
+                                    </td>
+                                    <td>
+                                        <div class="d-flex justify-content-center gap-2 flex-wrap">
+                                            <a href="/Category/EditCategory/@item.CategoryID" class="btn btn-outline-warning btn-sm rounded-pill px-3">
+                                                <i class="fas fa-edit me-1"></i> Edit
+                                            </a>
+                                            <a href="/Category/DeleteCategory/@item.CategoryID"
+                                               class="btn btn-outline-danger btn-sm rounded-pill px-3"
+                                               onclick="return confirm('Are you sure?');">
+                                                <i class="fas fa-trash-alt me-1"></i> Delete
+                                            </a>
+                                            <a href="/Heading/ByCategory/@item.CategoryID" class="btn btn-outline-info btn-sm rounded-pill px-3">
+                                                <i class="fas fa-heading me-1"></i> Headings
+                                            </a>
+                                        </div>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
