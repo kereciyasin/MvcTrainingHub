@@ -12,14 +12,16 @@ namespace MvcTrainingHub.Business.Concrete
 {
     public class CategoryManager : ICategoryService
     {
-       ICategoryDal _categoryDal;
+        ICategoryDal _categoryDal;
 
-
-
+        public CategoryManager(ICategoryDal categoryDal)
+        {
+            _categoryDal = categoryDal;
+        }
 
         public List<Category> GetList()
         {
-            throw new NotImplementedException();
+            return _categoryDal.GetAll();
         }
     }
 }

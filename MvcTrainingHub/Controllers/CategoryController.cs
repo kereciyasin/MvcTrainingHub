@@ -1,16 +1,23 @@
 ﻿using MvcTrainingHub.Business.Concrete;
+using MvcTrainingHub.DataAccess.Abstract;
 using MvcTrainingHub.Entities.Concrete;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using MvcTrainingHub.DataAccess.Concrete.Repositories;
+using MvcTrainingHub.DataAccess.EntityFramework;
+
+
+
 
 namespace MvcTrainingHub.Controllers
 {
     public class CategoryController : Controller
     {
-        CategoryManager cm = new CategoryManager();
+        CategoryManager cm = new CategoryManager(new EfCategoryDal());
+
         // GET: Category
         public ActionResult GetCategoryList()
         {
