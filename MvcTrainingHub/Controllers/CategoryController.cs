@@ -14,8 +14,8 @@ namespace MvcTrainingHub.Controllers
         // GET: Category
         public ActionResult GetCategoryList()
         {
-            var value = cm.GetAllBL();
-            return View(value);
+            //var value = cm.GetAllBL();
+            return View();
         }
         [HttpGet]
         public ActionResult AddCategory()
@@ -26,7 +26,7 @@ namespace MvcTrainingHub.Controllers
         [HttpPost]
         public ActionResult AddCategory(Category p)
         {
-            cm.CategoryAddBL(p);
+            //cm.CategoryAddBL(p);
             return RedirectToAction("GetCategoryList");
         }
     }

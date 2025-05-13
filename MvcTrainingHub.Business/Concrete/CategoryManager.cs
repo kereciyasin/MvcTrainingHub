@@ -1,4 +1,6 @@
-﻿using MvcTrainingHub.DataAccess.Concrete.Repositories;
+﻿using MvcTrainingHub.Business.Abstract;
+using MvcTrainingHub.DataAccess.Abstract;
+using MvcTrainingHub.DataAccess.Concrete.Repositories;
 using MvcTrainingHub.Entities.Concrete;
 using System;
 using System.Collections.Generic;
@@ -8,27 +10,16 @@ using System.Threading.Tasks;
 
 namespace MvcTrainingHub.Business.Concrete
 {
-    public class CategoryManager
+    public class CategoryManager : ICategoryService
     {
-        GenericRepository<Category> repository = new GenericRepository<Category>();
+       ICategoryDal _categoryDal;
 
-        public List<Category> GetAllBL()
+
+
+
+        public List<Category> GetList()
         {
-            return repository.GetAll();
-        }
-
-
-        public void CategoryAddBL(Category p)
-        {
-
-            if (p.CategoryName == "" || p.CategoryName.Length <= 3 || p.CategoryDescription == "" || p.CategoryName.Length >= 51)
-            {
-                // error message
-            }
-            else
-            {
-                repository.Insert(p);
-            }
+            throw new NotImplementedException();
         }
     }
 }
