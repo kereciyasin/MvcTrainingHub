@@ -11,5 +11,6 @@ namespace MvcTrainingHub.DataAccess.EntityFramework
 {
     public class EfCategoryDal : GenericRepository<Category>, ICategoryDal
     {
+
     }
 }

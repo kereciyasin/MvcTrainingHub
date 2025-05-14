@@ -31,6 +31,11 @@ namespace MvcTrainingHub.DataAccess.Concrete.Repositories
             c.SaveChanges();
         }
 
+        public T Get(Expression<Func<T, bool>> filter)
+        {
+            return _objectSet.SingleOrDefault(filter);
+        }
+
         public List<T> GetAll()
         {
             return _objectSet.ToList();
